@@ -10,7 +10,7 @@ option go_package = "github.com/daiyanuthsa/grpc-ecom-be/pb/product";
 
 service ProductService {
     rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
-    // rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+    rpc DetailProduct(DetailProductRequest) returns (DetailProductResponse);
     // rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse);
     // rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
     // rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
@@ -29,13 +29,18 @@ message CreateProductResponse {
     string id = 2;
 }
 
-// message GetProductRequest {
-//     string id = 1;
-// }
+message DetailProductRequest {
+    string id = 1;
+}
 
-// message GetProductResponse {
-//     Product product = 1;
-// }
+message DetailProductResponse {
+    common.BaseResponse base = 1;
+    string id = 2;
+    string name = 3;
+    string description = 4;
+    double price =  5;
+    string image_url = 6;
+}
 
 // message UpdateProductRequest {
 //     Product product = 1;
