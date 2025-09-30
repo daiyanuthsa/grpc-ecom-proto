@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "buf/validate/validate.proto";
+
+option go_package = "github.com/daiyanuthsa/grpc-ecom-be/pb/common;common";
+
+package common;
+
+message PaginationSortRequest{
+    string field = 1;
+    string order = 2;
+}
+
+message PaginationRequest {
+    int32 page = 1 [(buf.validate.field) = { int32: { gt: 0 }}];
+    int32 limit = 2 [(buf.validate.field) = { int32: { gt: 0, lte: 100 }}];
+    repeated PaginationSortRequest sort = 3;
+}
+
+message PaginationResponse {
+    int32 page = 1;
+    int32 limit = 2;
+    int32 total_pages = 3;
+    int32 total_elements = 4;
+}
