@@ -17,6 +17,7 @@ service ProductService {
     rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
     rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
     rpc ListProductsAdmin(ListProductsAdminRequest) returns (ListProductsAdminResponse);
+    rpc HighlightProducts(HighlightProductsRequest) returns (HighlightProductsResponse);
 }
 
 
@@ -109,3 +110,9 @@ message ProductAdmin {
     bool is_deleted = 12;
 }
 
+message HighlightProductsRequest {}
+
+message HighlightProductsResponse {
+    common.BaseResponse base = 1;
+    repeated Product products = 2;
+}
